@@ -50,7 +50,7 @@ export default function MovieSlide({ movies, title }) {
           id="scroll"
         >
           {movies ? (
-            movies.map((movie) => <MovieCard movie={movie} />)
+            movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
           ) : (
             <h2>loding....</h2>
           )}

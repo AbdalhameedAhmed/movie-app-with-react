@@ -1,5 +1,7 @@
+import { useState } from "react";
 import MainButton from "../buttons/MainButton";
 import Rating from "./Rating";
+import WatchLaterModal from "../modals/WatchLaterModal";
 
 function DetailsCard({ movie }) {
   const {
@@ -15,8 +17,18 @@ function DetailsCard({ movie }) {
     homepage,
   } = movie;
   const imagePath = "https://image.tmdb.org/t/p/original";
+  let [modelState, setmodelState] = useState("hidden");
+  const modelHandler = () => {
+    modelState === "" ? setmodelState("hidden") : setmodelState("");
+  };
   return (
     <>
+      <WatchLaterModal
+        visiblty={modelState}
+        res={setmodelState}
+        movie={movie}
+      />
+
       <div
         className="details py-24 px-12 relative before:absolute before:content-[''] before:left-0 before:top-0 before:w-full before:h-full before:bg-slate-900/75 before:z-0"
         style={{
@@ -60,6 +72,14 @@ function DetailsCard({ movie }) {
               <p className="text-lg font-bold mb-16">{overview}</p>
               <div className="buttons flex h-12 justify-center items-center gap-8">
                 <MainButton title="Watch Now" link={homepage} />
+                <button
+                  className="custom-btn inline-block"
+                  onClick={() => {
+                    modelHandler();
+                  }}
+                >
+                  Watch Later
+                </button>
               </div>
             </div>
           </div>
