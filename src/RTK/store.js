@@ -3,6 +3,7 @@ import PopularSlice from "./reducers/popularMoviesSlice";
 import topratedSlice from "./reducers/topRatedMoviesSlice";
 import trendingSlice from "./reducers/trendingMoviesSlice";
 import tvPopularSlice from "./reducers/tvPopularMoviesSlice";
+import singleMovieSlice from "./reducers/singleMovieSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     toprated: topratedSlice,
     trending: trendingSlice,
     tvPopular: tvPopularSlice,
+    singleMovie: singleMovieSlice,
   },
 });
